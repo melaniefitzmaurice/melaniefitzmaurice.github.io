@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Karla|Rubik:500");
 /* -------------------------------------------------------------------------
 VARIABLES
 */
@@ -42,6 +43,15 @@ VARIABLES
 
   --area-wide: 1200px;
 }
+
+@media screen and (min-width: 800px) {
+  :root {
+    --font-size-site-title: 54px;
+    --font-size-page-title: 80px;
+    --font-size-section-title: 48px;
+  }
+}
+
 /* -------------------------------------------------------------------------
 GLOBAL DEFAULTS
 */
@@ -63,7 +73,34 @@ iframe {
 /* -------------------------------------------------------------------------
 HEADINGS AND TYPE
 */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-heading);
+  color: var(--strong-test-color);
+}
+h1 {
+  font-size: var(--font-size-page-title);
+}
+h2 {
+  font-size: var(--font-size-section-title);
+}
+h3 {
+  font-size: var(--font-size-site-title);
+}
 
+/*links*/
+a {
+  color: var(--color-red);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--strong-text-color);
+  transition: var(--transition-time);
+}
 /* -------------------------------------------------------------------------
 LAYOUT
 */
@@ -120,6 +157,75 @@ header .layout-wide {
 /* -------------------------------------------------------------------------
 NAVIGATION
 */
+.navigation {
+  background-color: var(--alternative-bg-color);
+  position: sticky;
+  top: 0;
+}
+.nav-prompt {
+  width: 100%;
+  padding: var(--padder) 0;
+  background-color: var(--alternative-bg-color);
+  color: var(--alternative-text-color);
+  border-top: 1px solid var(--main-text-color);
+}
+.nav-inner {
+  margin-bottom: 0;
+}
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navigation li {
+  text-align: center;
+}
+.nav-inner a {
+  display: block;
+  color: var(--alternative-text-color);
+  padding: 20px 5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-inner li:last-child a {
+  border-bottom: none;
+}
+
+.nav-inner a:hover {
+  color: var(--error-color);
+  transition: var(--transition-time);
+  text-decoration: none;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-prompt {
+    display: none;
+  }
+  .navigation {
+    padding: 20px 0;
+  }
+  .navigation ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-inner a {
+    border-bottom: 2px solid transparent;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .nav-inner {
+    transition: var(--transition-time) ease-in-out;
+    overflow: hidden;
+  }
+  .nav-inner[aria-expanded="false"] {
+    max-height: 0;
+  }
+  .nav-inner[aria-expanded="true"] {
+    max-height: 100vh;
+  }
+}
 
 /* -------------------------------------------------------------------------
 HEADER
@@ -154,26 +260,40 @@ footer {
 
 /*Social Icons*/
 .social-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .social-links li {
-    display: inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .social-links a {
-    display:block;
-    max-width: 30px;
-    transform: scale(0.8);
-    transition: var(--transition-time);
+  display: block;
+  max-width: 30px;
+  transform: scale(0.8);
+  transition: var(--transition-time);
 }
 
 .social-links a:hover {
-    transform: scale(1);
+  transform: scale(1);
+}
+
+/*desktop*/
+@media screen and (min-width: 800px) {
+  .footer-notices .layout-wide {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    align-items: center;
+    text-align: left;
+    justify-content: space-around;
+  }
+  .social-links {
+    text-align: right;
+  }
 }
 
 /* -------------------------------------------------------------------------
@@ -181,17 +301,36 @@ FORMS
 */
 
 label {
-    display: block;
-    font-weight: bold;
+  display: block;
+  font-weight: bold;
 }
 
-input[type="text"], input[type="email"] {
-    border:1px solid var(--border-color);
-    padding: 10px;
-    border-radius: 4px;
-    width: 480px;
-    max-width: 100%;
-    margin-bottom: var(--spacer);
+input[type="text"],
+input[type="email"] {
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 4px;
+  width: 480px;
+  max-width: 100%;
+  margin-bottom: var(--spacer);
+}
+input[type="submit"],
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.button {
+  background-color: var(--color-light-green);
+  border-radius: 30px;
+  padding: 20px;
+  min-width: 200px;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: var(--strong-text-color);
+  color: var(--color-light-green);
 }
 
 /* -------------------------------------------------------------------------
